@@ -7,7 +7,7 @@ const url = "https://es.wikipedia.org/wiki/Categor%C3%ADa:M%C3%BAsicos_de_heavy_
 
 
 app.get("/", (req, res) => {
-    
+
     axios.get(url).then((response) => {
         if(response.status === 200) {
             const html = response.data;
@@ -15,23 +15,23 @@ app.get("/", (req, res) => {
             //const pageTitle = $("title").text();
 
             const links = [];
-            $(".external").each((index, element) => {
+            $("#mw-pages a").each((index, element) => {
                 const link = $(element).attr("href")
-                if (link.includes("from=")) {
+               
                     links.push(link)
-                }
                 
-                
+
+
             })
             console.log(links)
 
 
-            
+
         }
     })
 
-   
-    
+
+
 })
 
 app.listen(3000, () => {
